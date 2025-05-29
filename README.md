@@ -1,18 +1,19 @@
 # Web-Scraping
 
-Project Overview: Hidden Property Deals Collection System
-This project involves building a system to help a client discover hidden property deals by collecting and serving data from multiple online sources. The solution is divided into two key components:
+This project is for scrapping data from a web page for listing properties, to extract some info like title, price...etc and save these info a json format file to be then accessed by the API "/listing" that applis filters on the saved data.
 
 **Objective**
 Develop a two-stage solution that:
 1. Extracts property listings (title, price, location, link) from online sources using Python.
 2. Exposes the data via an API using Node.js and Express with filtering capabilities.
 
-**Task Breakdown**
-**Step 1: Python Web Scraper**
-- Create a Python script that crawls one or more property listing websites and extracts relevant property information.
-**Requirements:
-**
+***Web scrapping module 1: Python Web Scraper**
+**How to run**
+Navigate to ./web_scrapping_module directory and run these commands
+```pip install Beautifulsoup requests```
+  ```python web_scrapper.py```
+- Create a Python script that crawls all the pages property listing from website and extracts relevant property information.
+**Requirements:**
 Extract the following data:
 1. title
 2. price
@@ -24,44 +25,33 @@ Save the scraped data in a JSON file named listings.json.
   {
     "title": "3 Bedroom House in Suburbia",
     "price": 220000,
-    "location": "Manchester, UK",
+    "location": "XXX2",
     "link": "https://example.com/property/123"
   },
 
 Tools/Tech:
-Python 3.x
+Python 3.11
 requests, BeautifulSoup, or any preferred scraping libraries
 
-**Step 2: Node.js API Microservice
-**
-Goal:
-Create a simple Express.js API that serves the scraped data.
-**Requirements:
-**
+***Listing properties API 2: Node.js API Microservice**
+**How to run**
+Navigate to ./listing_properties_API directory and run this command 
+```nom install Express```
+  ```npm start```
+  it should start on port 5001
 Read from the listings.json file
 Create the following endpoint:
 bash
 GET /api/listings
 Support the following optional query parameters for filtering:
-minPrice
-maxPrice
+priceMin
+priceMax
 location
 Example Usage:
-GET /api/listings?minPrice=200000&maxPrice=300000&location=London
+GET /api/listings?priceMin=200000&priceMax=300000&location=S02
 Expected Output:
 A filtered list of matching property listings in JSON format.
 
 Tools/Tech:
 Node.js
 Express.js
-
-**Deliverables**
-scraper.py — Python web scraping script
-listings.json — Generated output file from the scraper
-server.js — Node.js Express API server
-README.md — documentation
-
-Success Criteria
-1. Scraper collects clean, structured data and writes to listings.json
-2. API starts without errors and correctly reads from listings.json
-3. API returns correct results and filters by price and location as expected
